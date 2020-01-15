@@ -9,6 +9,7 @@ import './App.css'
 import NavBar from './vidly/components/navBar'
 import MovieForm from './vidly/components/movieForm'
 import LoginForm from './vidly/components/loginForm'
+import RegisterForm from './vidly/components/registerForm'
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         <React.Fragment>
           <NavBar />
           <Switch>
+            <Route path='/register' component={RegisterForm}></Route>
             <Route path='/login' component={LoginForm}></Route>
             <Route path='/movies/:id' component={MovieForm}></Route>
             <Route path='/movies' component={Movies}></Route>
