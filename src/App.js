@@ -5,11 +5,11 @@ import Movies from './vidly/components/movies'
 import Customers from './vidly/components/customers'
 import Rentals from './vidly/components/rentals'
 import NotFound from './vidly/components/notFound'
-import './App.css'
 import NavBar from './vidly/components/navBar'
 import MovieForm from './vidly/components/movieForm'
 import LoginForm from './vidly/components/loginForm'
 import RegisterForm from './vidly/components/registerForm'
+import './App.css'
 
 class App extends Component {
   render() {
