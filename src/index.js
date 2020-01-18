@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import logger from './http-app/services/logService'
-// import App from './App'
+import App from './App'
 // import AppRoute from './AppRoute'
-import AppHttp from './AppHttp'
+// import AppHttp from './AppHttp'
 
 import * as serviceWorker from './serviceWorker'
 import './index.css'
@@ -15,7 +15,7 @@ logger.init()
 
 ReactDOM.render(
   <BrowserRouter>
-    <AppHttp />
+    <App />
   </BrowserRouter>,
   document.getElementById('root')
 )

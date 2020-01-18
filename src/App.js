@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Redirect, Switch } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
 import Movies from './vidly/components/movies'
 import Customers from './vidly/components/customers'
@@ -9,6 +10,8 @@ import NavBar from './vidly/components/navBar'
 import MovieForm from './vidly/components/movieForm'
 import LoginForm from './vidly/components/loginForm'
 import RegisterForm from './vidly/components/registerForm'
+
+import 'react-toastify/dist/ReactToastify.css'
 import './App.css'
 
 class App extends Component {
@@ -16,6 +19,7 @@ class App extends Component {
     return (
       <main className='container'>
         <React.Fragment>
+          <ToastContainer />
           <NavBar />
           <Switch>
             <Route path='/register' component={RegisterForm}></Route>
