@@ -10,8 +10,7 @@ http.setJwt(getJwt())
 
 export async function login(email, password) {
   const { data: jwt } = await http.post(apiEndpoint, { email, password })
-  localStorage.setItem(tokenKey, jwt)
-  appStore.userIsLogged = true
+  loginWithJwt(jwt)
 }
 
 export function loginWithJwt(jwt) {
@@ -26,7 +25,7 @@ export function logout() {
 
 export function getCurrentUser() {
   try {
-    const jwt = localStorage.getItem(tokenKey)
+    const jwt = getJwt()
     const user = jwtDecode(jwt)
     return user
   } catch (ex) {
