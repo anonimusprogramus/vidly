@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Route, Redirect, Switch } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 
+import appStore from './vidly/store'
+
 import Movies from './vidly/components/movies'
 import Customers from './vidly/components/customers'
 import Rentals from './vidly/components/rentals'
@@ -21,18 +23,16 @@ class App extends Component {
   state = {}
 
   componentDidMount() {
-    const user = auth.getCUrrentUser()
-    this.setState({ user })
+    appStore.user = auth.getCurrentUser()
+    appStore.userIsLogged = appStore.user !== null
   }
 
   render() {
-    const { user } = this.state
-
     return (
       <main className='container'>
         <React.Fragment>
           <ToastContainer />
-          <NavBar user={user} />
+          <NavBar />
           <Switch>
             <Route path='/register' component={RegisterForm}></Route>
             <Route path='/login' component={LoginForm}></Route>
@@ -43,7 +43,7 @@ class App extends Component {
             ></ProtectedRoute>
             <Route
               path='/movies'
-              render={props => <Movies {...props} user={user} />}
+              render={props => <Movies {...props} />}
             ></Route>
             <Route path='/customers' component={Customers}></Route>
             <Route path='/rentals' component={Rentals}></Route>

@@ -5,7 +5,7 @@ class Logout extends Component {
   componentDidMount() {
     auth.logout()
 
-    window.location = '/'
+    this.props.history.push('/')
   }
 
   render() {

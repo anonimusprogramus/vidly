@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import auth from '../services/authService'
+import appStore from '../store'
 
 import Like from './common/like'
 import Table from './common/table'
@@ -37,8 +37,8 @@ class MoviesTable extends Component {
 
   constructor() {
     super()
-    const user = auth.getCUrrentUser()
-    if (user && user.isAdmin) this.columns.push(this.deleteColumn)
+    if (appStore.userIsLogged && appStore.user.isAdmin)
+      this.columns.push(this.deleteColumn)
   }
 
   render() {

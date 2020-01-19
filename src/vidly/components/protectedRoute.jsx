@@ -1,13 +1,13 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import auth from '../services/authService'
+import appStore from '../store'
 
 const ProtectedRoute = ({ component: Component, render, ...rest }) => {
   return (
     <Route
       {...rest}
       render={props => {
-        if (!auth.getCUrrentUser())
+        if (!appStore.userIsLogged)
           return (
             <Redirect
               to={{

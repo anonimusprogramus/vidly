@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { view } from 'react-easy-state'
+import appStore from '../store'
 
-const NavBar = ({ user }) => {
+const NavBar = view(() => {
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
       <Link className='navbar-brand' to='/'>
@@ -20,9 +22,6 @@ const NavBar = ({ user }) => {
       </button>
       <div className='collapse navbar-collapse' id='navbarNav'>
         <div className='navbar-nav'>
-          <NavLink className='nav-item nav-link' to='/login'>
-            Login
-          </NavLink>
           <NavLink className='nav-item nav-link' to='/movies'>
             Movies
           </NavLink>
@@ -32,7 +31,7 @@ const NavBar = ({ user }) => {
           <NavLink className='nav-item nav-link' to='/rentals'>
             Rentals
           </NavLink>
-          {!user && (
+          {!appStore.userIsLogged && (
             <React.Fragment>
               <NavLink className='nav-item nav-link' to='/login'>
                 Login
@@ -42,10 +41,10 @@ const NavBar = ({ user }) => {
               </NavLink>
             </React.Fragment>
           )}
-          {user && (
+          {appStore.userIsLogged && (
             <React.Fragment>
               <NavLink className='nav-item nav-link' to='/profile'>
-                {user.name}
+                {appStore.user.name}
               </NavLink>
               <NavLink className='nav-item nav-link' to='/logout'>
                 Logout
@@ -56,6 +55,6 @@ const NavBar = ({ user }) => {
       </div>
     </nav>
   )
-}
+})
 
 export default NavBar
